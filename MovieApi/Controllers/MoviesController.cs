@@ -60,16 +60,17 @@ namespace MovieApi.Controllers
 
         [HttpGet]
         [Route("GetMovies")]
-        public async Task<IActionResult> GetMovies() { 
-        var result = await _moviesRepositery.GetAllAsync();
+        public async Task<IActionResult> GetMovies()
+        {
+            var result = await _moviesRepositery.GetAllAsync();
             return Ok(result);
         }
 
         [HttpGet]
         [Route("GetMovieById")]
-        public async Task<IActionResult> getById(int id) 
+        public async Task<IActionResult> getById(int id)
         {
-          var result = await _moviesRepositery.GetByID(id);
+            var result = await _moviesRepositery.GetByID(id);
             return Ok(result);
         }
     }

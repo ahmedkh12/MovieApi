@@ -21,7 +21,7 @@ namespace MovieApi.Controllers
 
         [HttpGet]
         [Route("GetGenres")]
-        public async Task<IActionResult> Get() 
+        public async Task<IActionResult> Get()
         {
             var data = await _moviesRepositery.GetAllAsync();
             return Ok(data);
@@ -30,7 +30,7 @@ namespace MovieApi.Controllers
         [HttpPost]
         [Route("CreateGenre")]
 
-        public async Task<IActionResult> Create(AddGenreDTO addGenreDTO) 
+        public async Task<IActionResult> Create(AddGenreDTO addGenreDTO)
         {
             var genre = new Genre
             {
@@ -38,31 +38,31 @@ namespace MovieApi.Controllers
                 Description = addGenreDTO.Description,
             };
 
-          await  _moviesRepositery.Create(genre);
+            await _moviesRepositery.Create(genre);
             return Ok(genre);
-           
+
 
         }
 
         [HttpGet]
         [Route("GetById")]
         public async Task<IActionResult> GetById(int id)
-        { 
+        {
             var result = await _moviesRepositery.GetByID(id);
             return Ok(result);
         }
 
         [HttpDelete]
         [Route("DeleteGenre")]
-        public async Task<IActionResult> Delete(int id ) 
+        public async Task<IActionResult> Delete(int id)
         {
-        await _moviesRepositery.Delete(id);
+            await _moviesRepositery.Delete(id);
             return Ok($"Item with ID {id} is deleted ");
         }
 
         [HttpPut]
         [Route("UpdateGenre")]
-        public async Task<IActionResult> update(int id  , AddGenreDTO addGenreDTO)
+        public async Task<IActionResult> update(int id, AddGenreDTO addGenreDTO)
         {
             var item = new Genre
             {
@@ -76,7 +76,7 @@ namespace MovieApi.Controllers
                 Description = item.Description,
             };
             await _moviesRepositery.Update(id, item);
-            return Ok (outitem);
+            return Ok(outitem);
         }
     }
 }
